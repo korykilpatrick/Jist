@@ -35,7 +35,7 @@ const File_Revision = Models.File_Revision(sequelize, Sequelize.DataTypes);
 
 User.hasMany(Gist, { foreignKey: 'userId' }); // adds userId to Gist as foreign key, User instances inherit getGists, setGists
 Gist.belongsTo(User, { foreignKey: 'userId' });
-Gist.hasMany(Revision, { foreignKey: 'gistId' }); // adds gistId to Revision as foreign key, Gist instances inherit getRevisions, setRevisions (plural?)
+Gist.hasMany(Revision, { foreignKey: 'gistId' }); // adds gistId to Revision as foreign key, Gist instances inherit getRevisions, setRevisions (plural??)
 Revision.belongsTo(Gist, { foreignKey: 'gistId' });
 
 

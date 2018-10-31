@@ -13,7 +13,7 @@ app.listen(PORT, () => {
 var fileId = '';
 var revisionId = '';
 
-// basic tests
+// basic testing
 db.sequelize.sync({ force: true, logging: console.log})
   .then(() => db.createUser())
   .then(user => db.createGist(user.dataValues.userId))

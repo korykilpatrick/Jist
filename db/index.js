@@ -52,8 +52,7 @@ const createGist = userId => (
 
 const createFile= () => (
   File.create({ 
-    name: 'myFile',
-    extension: '.js',
+    name: 'myFile.js',
     text: 'code'
   })
 )

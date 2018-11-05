@@ -16,16 +16,14 @@ module.exports.Gist = (sequelize, DataTypes) => {
   return sequelize.define('Gist', {
     gistId: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV1, unique: true, primaryKey: true },
     description: { type: DataTypes.STRING, allowNull: false, len: { args: [1, 20], msg: 'description between 1 and 20 chars, plz!' } },
-    url: { type: DataTypes.STRING, allowNull: false, validate: { isUrl: true } },
-    public: { type: DataTypes.BOOLEAN, defaultValue: true }, // default public, shouldnt' be able to update
+    public: { type: DataTypes.BOOLEAN, defaultValue: true } // default public, shouldnt' be able to update
   });
 };
 
 module.exports.File = (sequelize, DataTypes) => {
   return sequelize.define('File', {
     fileId: { type: DataTypes.UUID, defaultValue: DataTypes.UUIDV1, unique: true, primaryKey: true }, 
-    name: { type: DataTypes.STRING, allowNull: false, defaultValue: 'gistfile1' },
-    extension: { type: DataTypes.STRING, allowNull: false, defaultValue: '.txt' },
+    name: { type: DataTypes.STRING, defaultValue: 'gistfile1.txt' },
     text: { type: DataTypes.TEXT, allowNull: false } // can someone create an empty Gist?
     // tabs: { type: DataTypes.BOOLEAN, defaultValue: false }, // default Spaces
     // softWrap: { type: DataTypes.BOOLEAN, defaultValue: true }, // default soft wrap
@@ -35,7 +33,9 @@ module.exports.File = (sequelize, DataTypes) => {
     timestamps: true,
     updatedAt: false
   });
-}
+};
+
+// TO IMPLEMENT: MAKE REVISION, FILE, FILE_REVISION IMMUTABLE
 
 module.exports.Revision = (sequelize, DataTypes) => {
   return sequelize.define('Revision', {

@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Header = props => (
-  <div className="header">
+const Navbar = props => (
+  <div className="navbar">
     <a href="/">Jist</a>
     <button>All gists</button>
     <button>Jithub</button>
   </div>
 )
 
-export default Header;
+export default Navbar;

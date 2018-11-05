@@ -10,17 +10,20 @@ app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`);
 });
 
+app.use(express.static(__dirname + './../client'));
+
+
 var fileId = '';
 var revisionId = '';
 
 // basic tests
-db.sequelize.sync({ force: true, logging: console.log})
-  .then(() => db.createUser())
-  .then(user => db.createGist(user.dataValues.userId))
-  .then(gist => db.createRevision(gist.dataValues.gistId))
-  .then(revision => {
-    revisionId = revision.dataValues.revisionId;
-    return db.createFile()
-  })
-  .then(file => db.createFile_Revision(file.dataValues.fileId, revisionId))
+// db.sequelize.sync({ force: true, logging: console.log})
+//   .then(() => db.createUser())
+//   .then(user => db.createGist(user.dataValues.userId))
+//   .then(gist => db.createRevision(gist.dataValues.gistId))
+//   .then(revision => {
+//     revisionId = revision.dataValues.revisionId;
+//     return db.createFile()
+//   })
+//   .then(file => db.createFile_Revision(file.dataValues.fileId, revisionId))
 

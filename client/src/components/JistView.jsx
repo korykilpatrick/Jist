@@ -1,20 +1,25 @@
 import React from 'react';
 
 import FileList from './FileList.jsx';
+import JistHeader from './JistHeader.jsx';
+import JistFooter from './JistFooter.jsx';
 
-class Jist extends React.Component {
+class JistView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      readonly: 1,
+      readonly: false,
+      newJist: true,
       description: 'my gist',
       files: [{ filename: 'file1.js', text: 'my code' }]
     }
     this.renderDescription = this.renderDescription.bind(this);
+    this.updateJist = this.updateJist.bind(this);
+    this.renderFooter = this.renderFooter.bind(this);
   }
 
   renderDescription() {
-    if (this.state.readonly == 0) {
+    if (!this.state.readonly) {
       return (
         <input
           type="text"
@@ -27,28 +32,31 @@ class Jist extends React.Component {
     return <div>{this.state.description}</div>
   }
 
+  renderFooter() {
+    if (this.state.readonly) {
+      return <div></div>
+    }
+    return <JistFooter newJist={this.state.newJist} />
+  }
+
+  updateJist(e) {
+    let files = this.state.files;
+    // let file = {
+    //   ...files[e.target.value],
+    //   filename: e
+    // }
+    // this.setState({ files: })
+  }
+
   render() {
     return (
       <div>
         {this.renderDescription()}
         <FileList files={this.state.files} readonly={this.state.readonly} />
-        <button type="submit"
-                className="btn-addFile">
-                Add file
-        </button>
-        <button type="submit"
-                className="btn-secret"
-                value="0">
-                Create secret jist
-        </button>
-        <button type="submit"
-                className="btn-public"
-                value="1">
-                Create public jist
-        </button>
+        {this.renderFooter()}
       </div>
     )
   }
 }
 
-export default Jist;
+export default JistView;

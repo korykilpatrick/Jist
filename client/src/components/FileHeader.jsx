@@ -9,7 +9,7 @@ const FileHeader = ({file, readonly }) => (
                     className="input-filename"
                     type="text" 
                     value={file.filename}>
-                 </input>}
+                 </input> || ''}
     {!readonly && <input
                     className="input-filename"
                     type="text"

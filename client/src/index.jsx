@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer.jsx';
-import Jist from './components/Jist.jsx';
+import JistView from './components/JistView.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -21,7 +21,7 @@ class App extends React.Component {
     return (
       <div>
         <Navbar />
-        <Jist />
+        <JistView />
         <Footer />
       </div>
     )

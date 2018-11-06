@@ -13,8 +13,8 @@ app.listen(PORT, () => {
 app.use(express.static(__dirname + './../client'));
 
 
-var fileId = '';
-var revisionId = '';
+// var fileId = '';
+// var revisionId = '';
 
 // basic tests
 // db.sequelize.sync({ force: true, logging: console.log})
